@@ -4,7 +4,7 @@ subnet_ids = var.subnet_ids
 
 }
 
-resource "aws_security_group" "allow_all" {
+resource "aws_security_group" "allow_rds" {
   name        = "rds-sg"
   description = "rds-sg"
   vpc_id      = var.vpc_id
