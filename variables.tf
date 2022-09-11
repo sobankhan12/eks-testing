@@ -2,13 +2,13 @@ variable "region" {
   type    = string
   default = "us-east-1"
 }
-locals {
+# locals {
 
-  az1 = "${var.region}a"
-  az2 = "${var.region}b"
-  az3 = "${var.region}c"
+#   az1 = "${var.region}a"
+#   az2 = "${var.region}b"
+#   az3 = "${var.region}c"
 
-}
+# }
 variable "vpc_name" {
   type        = string
   description = "vpc name"
