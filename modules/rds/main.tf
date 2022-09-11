@@ -46,7 +46,7 @@ resource "aws_db_instance" "rds_instance" {
   db_subnet_group_name = aws_db_subnet_group.db-subnet.name
   publicly_accessible  = true
   skip_final_snapshot  = true
-  vpc_security_group_ids = [ aws_security_group.allow_all.id ]
+  vpc_security_group_ids = [ aws_security_group.allow_rds.id ]
 
   tags = {
     Name = "WeTravel_Task-db"
