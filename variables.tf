@@ -49,7 +49,7 @@ variable "eks_subnet_ids" {
 }
 variable "eks_node_subnets_ids" {
   type    = list(string)
-  default = ["add"]
+#   default = ["add"]
 }
 # variable "secret_key" {
 #   type = string
