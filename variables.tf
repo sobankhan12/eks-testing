@@ -31,22 +31,22 @@ variable "azs" {
   type    = list(string)
   default = ["us-east-1a", "us-east-1b"]
 }
-variable "subnet_ids" {
-  type    = list(string)
-  default = ["us12ddd", "djssjkddsf"]
-}
-variable "vpc_id" {
-  type    = string
-  default = ""
-}
-variable "cidr_block" {
-  type    = any
-  default = "testing"
-}
-variable "eks_subnet_ids" {
-  type    = list(string)
-  default = ["asa", "asa", "asad", "des"]
-}
+# variable "subnet_ids" {
+#   type    = list(string)
+#   default = ["us12ddd", "djssjkddsf"]
+# }
+# variable "vpc_id" {
+#   type    = string
+#   default = ""
+# }
+# variable "cidr_block" {
+#   type    = any
+#   default = "testing"
+# }
+# variable "eks_subnet_ids" {
+#   type    = list(string)
+#   default = ["asa", "asa", "asad", "des"]
+# }
 # variable "eks_node_subnets_ids" {
 #   type    = list(string)
 #   default = ["add"]
