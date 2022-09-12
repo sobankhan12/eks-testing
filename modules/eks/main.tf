@@ -96,7 +96,7 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadO
 
 resource "aws_eks_node_group" "private-nodes" {
   cluster_name    = aws_eks_cluster.demo.name
-  node_group_name = "private-nodes"
+  node_group_name = "private-nodes1"
   node_role_arn   = aws_iam_role.nodes.arn
 
   subnet_ids = var.eks_node_subnets_ids
