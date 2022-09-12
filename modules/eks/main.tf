@@ -56,6 +56,7 @@ resource "aws_eks_cluster" "demo" {
    
   vpc_config {
     subnet_ids = var.eks_subnet_ids
+    security_group_ids = flatten([aws_security_group.allow_all.id])
     
   }
 
