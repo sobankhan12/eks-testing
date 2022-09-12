@@ -5,8 +5,8 @@ subnet_ids = var.subnet_ids
 }
 
 resource "aws_security_group" "allow_rds" {
-  name        = "sg-rds"
-  description = "sg-rds"
+  name        = "wetravelrds"
+  description = "wetravelrds"
   vpc_id      = var.vpc_id
 
   ingress {
