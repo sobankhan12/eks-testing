@@ -52,10 +52,10 @@ variable "eks_node_subnets_ids" {
   default = ["add"]
 }
 variable "secret_key" {
-    type = string
-  
+  type = string
+
 }
 variable "access_key" {
-    type = string
-  
+  type = string
+
 }
