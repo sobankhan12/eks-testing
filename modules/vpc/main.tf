@@ -88,7 +88,7 @@ resource "aws_subnet" "public-us-east-1b" {
   map_public_ip_on_launch = true
 
   tags = {
-    "Name"                       = "public-us-east-1b"
+    "Name"                       = "public-us-east-11b"
     "kubernetes.io/role/elb"     = "1"
     "kubernetes.io/cluster/demo" = "owned"
   }
