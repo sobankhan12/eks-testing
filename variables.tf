@@ -47,10 +47,10 @@ variable "eks_subnet_ids" {
   type    = list(string)
   default = ["asa", "asa", "asad", "des"]
 }
-variable "eks_node_subnets_ids" {
-  type    = list(string)
+# variable "eks_node_subnets_ids" {
+#   type    = list(string)
 #   default = ["add"]
-}
+# }
 # variable "secret_key" {
 #   type = string
 
