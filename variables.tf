@@ -51,11 +51,11 @@ variable "eks_node_subnets_ids" {
   type    = list(string)
   default = ["add"]
 }
-variable "secret_key" {
-  type = string
+# variable "secret_key" {
+#   type = string
 
-}
-variable "access_key" {
-  type = string
+# }
+# variable "access_key" {
+#   type = string
 
-}
+# }
