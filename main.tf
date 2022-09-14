@@ -54,18 +54,18 @@ module "vpc" {
 
 
 
-module "rds" {
-  source     = "./modules/rds"
-  vpc_id     = module.vpc.vpc_id
-  cidr_block = module.vpc.cidr_block
-  subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b]
-  depends_on = [
-    module.vpc
-  ]
+# module "rds" {
+#   source     = "./modules/rds"
+#   vpc_id     = module.vpc.vpc_id
+#   cidr_block = module.vpc.cidr_block
+#   subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b]
+#   depends_on = [
+#     module.vpc
+#   ]
 
 
 
-}
+# }
 
 module "eks" {
   source         = "./modules/eks"
