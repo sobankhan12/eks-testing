@@ -57,16 +57,16 @@ module "vpc1" {
     aws=aws.us-east-1
    }
 }
-module "vpc2" {
-  source   = "./modules/vpc"
-  vpc_cidr = var.vpc_cidr
-  vpc_name = var.vpc_name
-  project = "we-travel"
-  region = var.region2
-  providers = {
-    aws=aws.eu-west-1
-   }
-}
+# module "vpc2" {
+#   source   = "./modules/vpc"
+#   vpc_cidr = var.vpc_cidr
+#   vpc_name = var.vpc_name
+#   project = "we-travel"
+#   region = var.region2
+#   providers = {
+#     aws=aws.eu-west-1
+#    }
+# }
 
 
 
