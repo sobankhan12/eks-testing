@@ -71,10 +71,13 @@ module "eks" {
   source         = "./modules/eks"
   vpc_id         = module.vpc.vpc_id
   eks_subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b, module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
-  depends_on = [
-    module.vpc
-  ]
+  # depends_on = [
+  #   module.vpc
+  # ]
   eks_node_subnets_ids = [module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
+  # depends_on = [
+  #   module.vpc.private-us-east-1a, module.vpc.private-us-east-1b
+  # ]
 }
 
 
