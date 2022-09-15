@@ -54,7 +54,7 @@ module "vpc1" {
   project = "we-travel"
   region = var.region1
   providers = {
-    aws="us-east-1"
+    aws=aws.us-east-1
    }
 }
 module "vpc2" {
