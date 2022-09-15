@@ -68,7 +68,7 @@ provider "aws" {
 
 #   eks_node_subnets_ids = [module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
 
-# }
+# } #
 module "ecr" {
   source = "./modules/ecr"
   name   = "wetravel"
