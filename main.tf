@@ -15,14 +15,14 @@ terraform {
       version = "~> 4.2"
     }
   }
-#   backend "remote" {
-#     organization = "soban252"
+  backend "remote" {
+    organization = "soban252"
 
-#     workspaces {
-#       name = "eks-testing"
-#     }
+    workspaces {
+      name = "eks-testing"
+    }
 
-#  }
+ }
  }
 provider "aws" {
   alias = "us-east-1"
