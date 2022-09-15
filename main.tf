@@ -40,11 +40,11 @@ provider "aws" {
 
 
 
-# module "vpc" {
-#   source   = "./modules/vpc"
-#   vpc_cidr = var.vpc_cidr
-#   vpc_name = var.vpc_name
-# }
+module "vpc" {
+  source   = "./modules/vpc"
+  vpc_cidr = var.vpc_cidr
+  vpc_name = var.vpc_name
+}
 
 
 
@@ -61,14 +61,14 @@ provider "aws" {
 
 # }
 
-# module "eks" {
-#   source         = "./modules/eks"
-#   vpc_id         = module.vpc.vpc_id
-#   eks_subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b, module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
+module "eks" {
+  source         = "./modules/eks"
+  vpc_id         = module.vpc.vpc_id
+  eks_subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b, module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
 
-#   eks_node_subnets_ids = [module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
+  eks_node_subnets_ids = [module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
 
-# } #
+} 
 module "ecr" {
   source = "./modules/ecr"
   name   = "wetravel"
