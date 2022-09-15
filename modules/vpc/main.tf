@@ -131,7 +131,7 @@ resource "aws_route_table_association" "private-us-east-1a" {
 }
 
 resource "aws_route_table_association" "private-1b" {
-  subnet_id      = aws_subnet.private-1b.id
+  subnet_id      = aws_subnet.privat-1b.id
   route_table_id = aws_route_table.private.id
 }
 
