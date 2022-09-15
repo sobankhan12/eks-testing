@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
   enable_dns_support = true
 
   tags = {
-    Name = var.vpc_name
+    Name = "${var.project}-${var.vpc_name}"
   }
 }
 
@@ -21,23 +21,23 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "igw"
+    Name = "${var.project}-igw"
   }
 }
 resource "aws_eip" "nat" {
   vpc = true
 
   tags = {
-    Name = "nat"
+    Name = "${var.project}-nat"
   }
 }
 
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.public-us-east-1a.id
+  subnet_id     = aws_subnet.public-1a.id
 
   tags = {
-    Name = "nat"
+    Name = "${var.project}-nat"
   }
 
   depends_on = [aws_internet_gateway.igw]
@@ -45,50 +45,50 @@ resource "aws_nat_gateway" "nat" {
 
 
 
-resource "aws_subnet" "private-us-east-1a" {
+resource "aws_subnet" "private-1a" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "${var.region}a"
 
   tags = {
-    "Name"                            = "private-us-east-1a"
+    "Name"                            = "private-${var.region}a"
     "kubernetes.io/role/internal-elb" = "1"
     "kubernetes.io/cluster/demo"      = "owned"
   }
 }
 
-resource "aws_subnet" "private-us-east-1b" {
+resource "aws_subnet" "privat-1b" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.2.0/24"
-  availability_zone = "us-east-1b"
+  availability_zone = "${var.region}b"
   tags = {
-    "Name"                            = "private-us-east-1b"
+    "Name"                            = "private-${var.region}-b"
     "kubernetes.io/role/internal-elb" = "1"
     "kubernetes.io/cluster/demo"      = "owned"
   }
 }
 
-resource "aws_subnet" "public-us-east-1a" {
+resource "aws_subnet" "public-1a" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.3.0/24"
-  availability_zone       = "us-east-1a"
+  availability_zone       = "${var.region}-a"
   map_public_ip_on_launch = true
 
   tags = {
-    "Name"                       = "public-us-east-1a"
+    "Name"                       = "public-${var.region}-a"
     "kubernetes.io/role/elb"     = "1"
     "kubernetes.io/cluster/demo" = "owned"
   }
 }
 
-resource "aws_subnet" "public-us-east-1b" {
+resource "aws_subnet" "public-1b" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.4.0/24"
   availability_zone       = "us-east-1b"
   map_public_ip_on_launch = true
 
   tags = {
-    "Name"                       = "public-us-east-11b"
+    "Name"                       = "public-${var.region}-b"
     "kubernetes.io/role/elb"     = "1"
     "kubernetes.io/cluster/demo" = "owned"
   }
@@ -104,7 +104,7 @@ resource "aws_route_table" "private" {
   
 
   tags = {
-    Name = "private"
+    Name = "${var.project}-private"
   }
 }
 
@@ -121,27 +121,27 @@ resource "aws_route_table" "public" {
   
 
   tags = {
-    Name = "public"
+    Name = "${var.project}-public"
   }
 }
 
 resource "aws_route_table_association" "private-us-east-1a" {
-  subnet_id      = aws_subnet.private-us-east-1a.id
+  subnet_id      = aws_subnet.private-1a.id
   route_table_id = aws_route_table.private.id
 }
 
-resource "aws_route_table_association" "private-us-east-1b" {
-  subnet_id      = aws_subnet.private-us-east-1b.id
+resource "aws_route_table_association" "private-1b" {
+  subnet_id      = aws_subnet.private-1b.id
   route_table_id = aws_route_table.private.id
 }
 
-resource "aws_route_table_association" "public-us-east-1a" {
-  subnet_id      = aws_subnet.public-us-east-1a.id
+resource "aws_route_table_association" "public-1a" {
+  subnet_id      = aws_subnet.public-1a.id
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_route_table_association" "public-us-east-1b" {
-  subnet_id      = aws_subnet.public-us-east-1b.id
+resource "aws_route_table_association" "public-1b" {
+  subnet_id      = aws_subnet.public-1b.id
   route_table_id = aws_route_table.public.id
 }
 

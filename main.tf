@@ -25,7 +25,14 @@ terraform {
 #  }
  }
 provider "aws" {
-  region = var.region
+  alias = "us-east-1"
+  region = var.region1
+
+
+}
+provider "aws" {
+  alias = "eu-west-1"
+  region = var.region2
 
 
 }
@@ -40,10 +47,25 @@ provider "aws" {
 
 
 
-module "vpc" {
+module "vpc1" {
   source   = "./modules/vpc"
   vpc_cidr = var.vpc_cidr
   vpc_name = var.vpc_name
+  project = "we-travel"
+  region = var.region1
+  providers = {
+    aws="us-east-1"
+   }
+}
+module "vpc2" {
+  source   = "./modules/vpc"
+  vpc_cidr = var.vpc_cidr
+  vpc_name = var.vpc_name
+  project = "we-travel"
+  region = var.region2
+  providers = {
+    aws=aws.eu-west-1
+   }
 }
 
 
@@ -61,17 +83,17 @@ module "vpc" {
 
 # }
 
-module "eks" {
-  source         = "./modules/eks"
-  vpc_id         = module.vpc.vpc_id
-  eks_subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b, module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
+# module "eks" {
+#   source         = "./modules/eks"
+#   vpc_id         = module.vpc.vpc_id
+#   eks_subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b, module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
 
-  eks_node_subnets_ids = [module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
+#   eks_node_subnets_ids = [module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
 
-} 
-module "ecr" {
-  source = "./modules/ecr"
-  name   = "wetravel"
-}
+# } 
+# module "ecr" {
+#   source = "./modules/ecr"
+#   name   = "wetravel"
+# }
 
 

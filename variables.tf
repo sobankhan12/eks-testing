@@ -1,6 +1,10 @@
-variable "region" {
+variable "region1" {
   type    = string
   default = "us-east-1"
+}
+variable "region2" {
+  type    = string
+  default = "eu-west-1"
 }
 # locals {
 
@@ -31,6 +35,11 @@ variable "azs" {
   type    = list(string)
   default = ["us-east-1a", "us-east-1b"]
 }
+
+# variable "project" {
+#   type=string
+  
+# }
 # variable "subnet_ids" {
 #   type    = list(string)
 #   default = ["us12ddd", "djssjkddsf"]
